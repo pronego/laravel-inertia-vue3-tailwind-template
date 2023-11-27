@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
          \App\Models\User::factory()->create([
-             'name' => 'Test User',
+             'username' => 'pronego', // has admin rights
              'email' => 'info@pronego.com',
 			 'password' => 'test',
 			 'active' => 1

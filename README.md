@@ -15,27 +15,40 @@ Additionally, it provides some sample code to list and edit users.
 
 ## Installation
 
-1. git clone
+1. git clone https://github.com/pronego/laravel-inertia-vue3-tailwind-template.git myapp
 
-2. `ddev config --project-type=laravel --docroot=public --create-docroot --php-version=8.2`
+2. cd myapp/
 
-3. Install phpmyadmin: `ddev get ddev/ddev-phpmyadmin`
+3.  `ddev config --project-type=laravel --docroot=public --create-docroot --php-version=8.2`
 
-4. Enable xdebug: `ddev xdebug`
+4. Install phpmyadmin: `ddev get ddev/ddev-phpmyadmin`
+
+5. Copy `.env.example` to `.env` and adjust accordingly
+
+6. `ddev start`
+
+7. `ddev composer install`
+
+8. `ddev exec "php artisan key:generate"`
+
+9. `ddev npm install`
+
+10. `ddev php artisan migrate`
+
+11. `ddev php artisan db:seed` 
+
+12. Enable xdebug: `ddev xdebug`
   Verify in `.ddev/config.yaml` that `xdebug_enabled: true`
 
-5. Adjust `.ddev/config.yaml`, add
-   ```
-   nodejs_version: "18"
-   hooks:
-      post-start:
-      - exec: "npm run dev -- --host"```
+13. Adjust `.ddev/config.yaml`, add
+    ```
+    nodejs_version: "18"
+      hooks:
+        post-start:
+        - exec: "npm run dev -- --host"
+    ```
 
-6. `ddev composer install`
-
-7. Copy `.env.example` to `.env` and adjust accordingly
-
-8. Create `.ddev/docker-compose.vite.yaml`:
+14. Create `.ddev/docker-compose.vite.yaml`:
    ```
    # Override the web container's standard HTTP_EXPOSE and HTTPS_EXPOSE services
    # to expose port 3000 of DDEV's web container.
@@ -49,15 +62,11 @@ Additionally, it provides some sample code to list and edit users.
         HTTPS_EXPOSE: ${DDEV_ROUTER_HTTPS_PORT}:80,${DDEV_MAILHOG_HTTPS_PORT}:8025,5173:5173
    ```
    
-9. `ddev start`
+15. `ddev restart`
 
-10. `ddev exec "php artisan key:generate"`
+> Open application and login with `info@pronego.com` and password `test`.
 
-11. `ddev npm install`
 
-12. `ddev php artisan migrate`
-
-13. `ddev php artisan db:seed`
 
 ## License
 The Laravel framework, Inertia.js, Vite, Vue.js, and Tailwind CSS are open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
